@@ -7,6 +7,7 @@ django_role_ctrl = DjangoRolesAPI()
 
 def test_create_role(create_read_role):
     resp, role_data = create_read_role
+    assert resp.name == role_data.name
     assert_role_was_created_or_changed(expected_role=role_data, role_id=resp.id_)
 
 
