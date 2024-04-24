@@ -5,11 +5,9 @@ from core.api_service.django_app.dtos.payload_role_dto import PayloadDjangoRoleD
 django_role_ctrl = DjangoRolesAPI()
 
 
-def test_create_role():
-    role_data = PayloadDjangoRoleDTO.random()
-    resp = django_role_ctrl.post_create_role(data=role_data.serialize())
+def test_create_role(create_read_role):
+    resp, role_data = create_read_role
     assert_role_was_created_or_changed(expected_role=role_data, role_id=resp.id_)
-    django_role_ctrl.post_delete_role(resp.id_)
 
 
 @mark.parametrize('name', ['', None,])

@@ -4,7 +4,7 @@ django_role_ctrl = DjangoRolesAPI()
 
 
 def test_add_user_to_role(create_read_role, create_read_user_function_scope):
-    role = create_read_role
+    role = create_read_role[0]
     user = create_read_user_function_scope
 
     django_role_ctrl.post_add_user(role_id=role.id_, data={'user_id': user.id_})
@@ -15,7 +15,7 @@ def test_add_user_to_role(create_read_role, create_read_user_function_scope):
 
 
 def test_add_user_to_role_twice(create_read_role, create_read_user_function_scope):
-    role = create_read_role
+    role = create_read_role[0]
     user = create_read_user_function_scope
 
     django_role_ctrl.post_add_user(role_id=role.id_, data={'user_id': user.id_})

@@ -13,7 +13,7 @@ django_user_ctrl = DjangoUsersAPIUsers()
 def create_read_role():
     role_data = PayloadDjangoRoleDTO.random()
     resp = django_role_ctrl.post_create_role(role_data.serialize())
-    yield resp
+    yield resp, role_data
     django_role_ctrl.post_delete_role(resp.id_)
 
 
